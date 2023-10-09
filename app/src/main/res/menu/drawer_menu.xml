@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile"/>
+        <item
+            android:id="@+id/settingsFragment"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings"/>
+
+
+        <item
+            android:id="@+id/drawerInfoFragment2"
+            android:icon="@drawable/ic_info"
+            android:title="About Us"/>
+    </group>
+    <item
+        android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_exit"
+                android:title="Logout"/>
+        </menu>
+
+    </item>
+
+</menu>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/anasayfaFragment3">
+    <fragment
+        android:id="@+id/anasayfaFragment3"
+        android:name="com.example.udemybitirme2.ui.fragment.AnasayfaFragment"
+        android:label="AnasayfaFragment" >
+        <action
+            android:id="@+id/sepetGecis"
+            app:destination="@id/sepetFragment2" />
+        <action
+            android:id="@+id/drawerInfoGecis"
+            app:destination="@id/drawerInfoFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/sepetFragment2"
+        android:name="com.example.udemybitirme2.ui.fragment.SepetFragment"
+        android:label="fragment_sepet"
+        tools:layout="@layout/fragment_sepet" />
+    <fragment
+        android:id="@+id/drawerInfoFragment2"
+        android:name="com.example.udemybitirme2.ui.fragment.DrawerInfoFragment"
+        android:label="fragment_drawer_info"
+        tools:layout="@layout/fragment_drawer_info" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.udemybitirme2.ui.fragment.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.udemybitirme2.ui.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.udemybitirme2.ui.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/kampanyalarFragment3"
+        android:name="com.example.udemybitirme2.ui.fragment.KampanyalarFragment"
+        android:label="fragment_kampanyalar"
+        tools:layout="@layout/fragment_kampanyalar" />
+    <fragment
+        android:id="@+id/favorilerFragment2"
+        android:name="com.example.udemybitirme2.ui.fragment.FavorilerFragment"
+        android:label="fragment_favoriler"
+        tools:layout="@layout/fragment_favoriler" />
+    <fragment
+        android:id="@+id/sepetFragment"
+        android:name="com.example.udemybitirme2.ui.fragment.SepetFragment"
+        android:label="fragment_sepet"
+        tools:layout="@layout/fragment_sepet" />
+    <fragment
+        android:id="@+id/restoranFragment"
+        android:name="com.example.udemybitirme2.ui.fragment.RestoranFragment"
+        android:label="fragment_restoran"
+        tools:layout="@layout/fragment_restoran" />
+</navigation>
