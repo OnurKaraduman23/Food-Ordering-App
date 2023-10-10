@@ -17,7 +17,9 @@ import androidx.navigation.ui.NavigationUI
 import com.example.udemybitirme2.R
 import com.example.udemybitirme2.databinding.FragmentAnasayfaBinding
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AnasayfaFragment : Fragment() {
 
     lateinit var binding: FragmentAnasayfaBinding

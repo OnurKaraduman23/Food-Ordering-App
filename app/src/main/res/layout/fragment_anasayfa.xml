@@ -15,11 +15,20 @@
         android:background="@color/lavender"
         tools:context=".ui.fragment.AnasayfaFragment">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/navHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            android:background="@color/white"
+            app:navGraph="@navigation/bottom_nav" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_gravity="bottom"
             android:background="@color/white"
             app:fabCradleMargin="10dp"
@@ -32,7 +41,9 @@
                 android:layout_marginEnd="20dp"
                 android:background="@android:color/transparent"
                 app:labelVisibilityMode="labeled"
-                app:menu="@menu/bottom_menu" />
+                app:menu="@menu/bottom_menu" >
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
@@ -45,16 +56,7 @@
             app:maxImageSize="40dp"
             android:onClick="@{()->fragmentAnsayayfaNesnesi.fabButtonSepet(fab)}"
             android:id="@+id/fab"
-            app:tint="@color/lavender" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/navHostFragment"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/bottom_nav" />
-
+            app:tint="@color/blue" />
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
