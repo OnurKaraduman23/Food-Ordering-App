@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -21,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AnasayfaFragment : Fragment() {
-
+    private lateinit var fragmentManager : FragmentManager
     lateinit var binding: FragmentAnasayfaBinding
     lateinit var it:View
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -32,17 +33,37 @@ class AnasayfaFragment : Fragment() {
         binding.fragmentAnsayayfaNesnesi = this
         binding.bottomNavigationView.background = null
 
-        val navHostFragment = childFragmentManager
-            .findFragmentById(R.id.navHostFragment) as NavHostFragment
-        NavigationUI.setupWithNavController(binding.bottomNavigationView, navHostFragment.navController)
 
 
+//        val navHostFragment = childFragmentManager
+//            .findFragmentById(R.id.navHostFragment) as NavHostFragment
+//        NavigationUI.setupWithNavController(binding.bottomNavigationView, navHostFragment.navController)
+
+        binding.bottomNavigationView.setOnItemSelectedListener {item ->
+
+            when(item.itemId){
+                R.id.action_home -> openFragment(HomeFragment())
+                R.id.action_kampanya -> openFragment(ProfileFragment())
+                R.id.action_favori -> openFragment(FavorilerFragment())
+                R.id.action_restaurant -> openFragment(RestoranFragment())
+            }
+            true
+
+        }
+        fragmentManager = childFragmentManager
+        openFragment(HomeFragment())
 
         return binding.root
     }
 
     fun fabButtonSepet(it:View){
         Navigation.findNavController(it).navigate(R.id.sepetGecis)
+    }
+
+    private fun openFragment(fragment:Fragment){
+        val fragmentTransaction : FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.navHostFragment,fragment)
+        fragmentTransaction.commit()
     }
 
 

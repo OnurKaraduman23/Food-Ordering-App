@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/anasayfaFragment3">
+    app:startDestination="@id/anasayfaFragment">
     <fragment
-        android:id="@+id/anasayfaFragment3"
+        android:id="@+id/anasayfaFragment"
         android:name="com.example.udemybitirme2.ui.fragment.AnasayfaFragment"
         android:label="AnasayfaFragment" >
         <action
@@ -14,6 +14,9 @@
         <action
             android:id="@+id/drawerInfoGecis"
             app:destination="@id/drawerInfoFragment2" />
+        <action
+            android:id="@+id/yemekDetayFragmentGecis"
+            app:destination="@id/yemekDetayFragment2" />
     </fragment>
     <fragment
         android:id="@+id/sepetFragment2"
@@ -35,4 +38,12 @@
         android:name="com.example.udemybitirme2.ui.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/yemekDetayFragment2"
+        android:name="com.example.udemybitirme2.ui.fragment.YemekDetayFragment"
+        android:label="YemekDetayFragment" >
+        <argument
+            android:name="yemekler"
+            app:argType="com.example.udemybitirme2.data.entity.Yemekler" />
+    </fragment>
 </navigation>

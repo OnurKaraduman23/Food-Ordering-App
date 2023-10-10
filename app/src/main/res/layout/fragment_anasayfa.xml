@@ -20,9 +20,9 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:defaultNavHost="true"
             android:background="@color/white"
-            app:navGraph="@navigation/bottom_nav" />
+
+            app:defaultNavHost="true" />
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/bottomAppBar"

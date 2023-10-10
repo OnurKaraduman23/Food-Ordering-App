@@ -12,6 +12,7 @@
     <color name="blue">#12478B</color>
     <color name="green">#32E809</color>
     <color name="gray">#525352</color>
+    <color name="transparentGray">#DDDFDD</color>
 
 
 </resources>

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/action_home"
         android:title="@string/home"
         android:icon="@drawable/ic_home"/>
 
     <item
-        android:id="@+id/kampanyalarFragment3"
+        android:id="@+id/action_kampanya"
         android:title="@string/campaign"
         android:icon="@drawable/ic_whatshot"
         />
@@ -17,11 +17,11 @@
         android:title=""/>
 
     <item
-        android:id="@+id/favorilerFragment2"
+        android:id="@+id/action_favori"
         android:title="@string/favorite"
         android:icon="@drawable/ic_favorite_dolu" />
     <item
-        android:id="@+id/restoranFragment"
+        android:id="@+id/action_restaurant"
         android:title="@string/restaurant"
         android:icon="@drawable/ic_restaurant" />
 

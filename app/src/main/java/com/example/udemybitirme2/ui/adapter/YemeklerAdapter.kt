@@ -5,11 +5,13 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.udemybitirme2.R
 import com.example.udemybitirme2.data.entity.Yemekler
 import com.example.udemybitirme2.databinding.CardYemekTasarimBinding
+import com.example.udemybitirme2.ui.fragment.AnasayfaFragmentDirections
 import com.example.udemybitirme2.ui.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 
@@ -42,6 +44,13 @@ class YemeklerAdapter(var mContext:Context, var yemeklerListesi:List<Yemekler>,v
                 .setTextColor(Color.BLUE)
                 .setActionTextColor(Color.RED)
                 .show()
+
+        }
+
+        t.imageViewYemek.setOnClickListener {
+
+            val gecis = AnasayfaFragmentDirections.yemekDetayFragmentGecis(yemek)
+            Navigation.findNavController(it).navigate(gecis)
 
         }
     }
