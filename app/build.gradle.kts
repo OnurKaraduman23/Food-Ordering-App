@@ -68,6 +68,37 @@ dependencies {
     //Glide
     implementation("com.github.bumptech.glide:glide:4.13.2")
 
+//////////////////////////////////
+    //circle image view
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    //scalable unit text size
+    implementation ("com.intuit.ssp:ssp-android:1.0.6")
+
+    //scalable unit size
+    implementation ("com.intuit.sdp:sdp-android:1.0.6")
+
+    //room database
+    implementation ("androidx.room:room-runtime:2.6.0")
+    kapt ("androidx.room:room-compiler:2.6.0")
+    implementation ("androidx.room:room-ktx:2.6.0")
+    implementation ("com.makeramen:roundedimageview:2.3.0")
+
+    //crop image library
+
+
+
+    //easy permission
+
+    implementation ("pub.devrel:easypermissions:3.0.0")
+
+    //coroutines core
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+
+
+    implementation ("com.github.bumptech.glide:glide:4.13.2")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.11.0")
+
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

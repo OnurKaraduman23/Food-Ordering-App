@@ -20,11 +20,15 @@ class YemekDetayFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_yemek_detay,container,false)
 
 
-//        val bundle : YemekDetayFragmentArgs by navArgs()
-//        val yemek = bundle.yemekler
-//
-//        val url = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
-//        Glide.with(this).load(url).override(4000,5500).into(binding.imageViewYemekDetay)
+        val bundle : YemekDetayFragmentArgs by navArgs()
+        val yemek = bundle.yemekler
+
+        val url = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
+        Glide.with(this).load(url).override(4000,5500).into(binding.imgYemekGorsel)
+
+        binding.textViewYemekAdi.text = yemek.yemek_adi
+//        binding.textViewYemekHakkinda.text = "${yemek.yemek_fiyat} ₺"
+
         return binding.root
     }
 

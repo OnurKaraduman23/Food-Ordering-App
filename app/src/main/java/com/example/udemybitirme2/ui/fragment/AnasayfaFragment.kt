@@ -35,9 +35,6 @@ class AnasayfaFragment : Fragment() {
 
 
 
-//        val navHostFragment = childFragmentManager
-//            .findFragmentById(R.id.navHostFragment) as NavHostFragment
-//        NavigationUI.setupWithNavController(binding.bottomNavigationView, navHostFragment.navController)
 
         binding.bottomNavigationView.setOnItemSelectedListener {item ->
 
