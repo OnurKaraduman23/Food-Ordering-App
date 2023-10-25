@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <data>
+            <variable name="yemekDetayFragmentNesnesi" type="com.example.udemybitirme2.ui.fragment.YemekDetayFragment" />
+            <variable name="yemeklerNesnesi" type="com.example.udemybitirme2.data.entity.Yemekler" />
+            <variable name="kullanici_adi" type="String" />
 
     </data>
 
@@ -14,69 +16,70 @@
         android:background="@color/white">
 
 
-
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/appBarDetail"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:background="@color/transparent">
+            android:background="@color/transparent"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
 
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_250sdp"
                 app:contentScrim="@color/blue"
-                app:expandedTitleMarginStart="@dimen/_16sdp"
                 app:expandedTitleMarginEnd="@dimen/_72sdp"
+                app:expandedTitleMarginStart="@dimen/_16sdp"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
 
                 <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/imgYemekGorsel"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_250sdp"
-                    android:id="@+id/imgYemekGorsel"
-
-                    app:layout_collapseMode="parallax"
                     android:src="@drawable/bg_splash"
+                    app:layout_collapseMode="parallax"
                     app:layout_collapseParallaxMultiplier="0.7"
-                    app:riv_corner_radius_bottom_right="@dimen/_20sdp"
-                    app:riv_corner_radius_bottom_left="@dimen/_20sdp" />
+                    app:riv_corner_radius_bottom_left="@dimen/_20sdp"
+                    app:riv_corner_radius_bottom_right="@dimen/_20sdp" />
 
                 <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:id="@+id/toolbar"
                     app:layout_scrollFlags="scroll|enterAlways"
                     app:titleTextColor="@color/white" />
 
                 <ImageButton
+                    android:id="@+id/imgToolbarBtnBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/btn_bg2"
                     android:paddingStart="@dimen/_12sdp"
                     android:paddingTop="@dimen/_8sdp"
                     android:paddingEnd="@dimen/_4sdp"
                     android:paddingBottom="@dimen/_8sdp"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_gravity="start"
-                    android:background="@drawable/btn_bg2"
-                    android:id="@+id/imgToolbarBtnBack"
                     android:src="@drawable/ic_back" />
 
                 <ImageButton
+                    android:id="@+id/imgToolbarBtnFav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/_8sdp"
-                    android:layout_margin="@dimen/_10sdp"
                     android:layout_gravity="end"
+                    android:layout_margin="@dimen/_10sdp"
                     android:background="@drawable/btn_bg2"
-                    android:id="@+id/imgToolbarBtnFav"
+                    android:padding="@dimen/_8sdp"
                     android:src="@drawable/ic_fav_unfill" />
 
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
 
+
+
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollView"
@@ -85,11 +88,111 @@
             android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/textViewYemekFiyat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="8dp"
+                        android:text='@{yemeklerNesnesi.yemek_fiyat + " ₺"}'
+                        android:textColor="@color/black"
+                        android:textSize="38sp" />
+                </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:backgroundTint="@color/white"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:cardElevation="@dimen/_5sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingVertical="@dimen/_5ssp">
+
+                            <ImageView
+                                android:id="@+id/imgAzalt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:background="@color/purple_700"
+                                android:src="@drawable/ic_decrease" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:paddingHorizontal="5dp">
+
+                            <TextView
+                                android:id="@+id/textViewYemekAdet"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="8dp"
+                                android:gravity="center"
+                                android:paddingVertical="@dimen/_5ssp"
+                                android:text="1"
+                                android:textColor="@color/black"
+                                android:textSize="38sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingVertical="@dimen/_5ssp">
+
+                            <ImageView
+                                android:id="@+id/imgArttir"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="3dp"
+                                android:background="@color/purple_700"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+
+                </androidx.cardview.widget.CardView>
+
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -112,7 +215,7 @@
                             android:fontFamily="@font/gilroy_bold"
                             android:textAlignment="center"
                             android:padding="@dimen/_10sdp"
-                            android:text="Yemek Adı"
+                            android:text="@{yemeklerNesnesi.yemek_adi}"
                             android:id="@+id/textViewYemekAdi"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_15ssp" />
@@ -242,7 +345,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/_10ssp"
-                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releaseof Letraset sheets containing Lorem Ipsum passages, and more recently with desktoppublishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s"
                             android:textColor="@color/hintTextColor"
                             android:textStyle="bold"
                             android:fontFamily="@font/gilroy_light"
@@ -266,6 +369,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginBottom="25dp"
                     app:cardBackgroundColor="@color/pink"
                     app:cardCornerRadius="@dimen/_10sdp"
                     app:cardElevation="@dimen/_5sdp">
@@ -273,7 +377,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_marginBottom="65dp">
 
                         <TextView
                             android:id="@+id/textViewYemekHakkinda"
@@ -282,7 +387,7 @@
                             android:textSize="@dimen/_10ssp"
                             android:textColor="@color/hintTextColor"
                             android:textStyle="bold"
-                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releaseof Letraset sheets containing Lorem Ipsum passages, and more recently with desktoppublishing software like Aldus PageMaker including versions of Lorem Ipsum"
+                            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s"
                             android:fontFamily="@font/gilroy_light"
                             android:paddingTop="@dimen/_10sdp"
                             android:paddingStart="@dimen/_5sdp"
@@ -291,47 +396,45 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-
-
-
-
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
         <com.google.android.material.bottomappbar.BottomAppBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_gravity="bottom">
+            android:layout_gravity="bottom"
+            android:gravity="bottom">
             <Button
                 android:id="@+id/addToCartButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
+                android:layout_marginBottom="18dp"
+                android:layout_marginRight="10dp"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/gilroy_bold"
                 android:background="@drawable/add_to_cart"
                 android:text="Add to cart"
                 android:layout_gravity="right"
-
                 android:textColor="#FFF"
+                android:onClick="@{()->yemekDetayFragmentNesnesi.sepeteEkle(yemeklerNesnesi.yemek_adi,yemeklerNesnesi.yemek_resim_adi,yemeklerNesnesi.yemek_fiyat,textViewYemekAdet.getText().toString(),kullanici_adi.toString())}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
+                android:id="@+id/textViewToplamFiyat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_margin="16dp"
+                android:layout_margin="10dp"
+                android:paddingBottom="13dp"
                 android:fontFamily="@font/caveat_bold"
                 android:paddingLeft="20dp"
                 android:paddingRight="26dp"
                 android:text="100 ₺"
                 android:textColor="@color/black"
-                android:textSize="26sp"
-
+                android:textSize="30sp"
                 android:textStyle="bold" />
         </com.google.android.material.bottomappbar.BottomAppBar>
 

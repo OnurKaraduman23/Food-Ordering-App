@@ -30,9 +30,5 @@ class HomeViewModel @Inject constructor(var yRepo:YemeklerRepository) : ViewMode
             }
         }
     }
-     fun sil(yemek_id:Int){
-        CoroutineScope(Dispatchers.Main).launch{
-            yRepo.sil(yemek_id)
-        }
-    }
+
 }
