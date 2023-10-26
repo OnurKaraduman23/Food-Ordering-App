@@ -84,9 +84,8 @@ dependencies {
     implementation ("androidx.room:room-ktx:2.6.0")
     implementation ("com.makeramen:roundedimageview:2.3.0")
 
-    //crop image library
-
-
+    //Lottie
+    implementation ("com.airbnb.android:lottie:3.4.0")
 
     //easy permission
 

@@ -17,6 +17,9 @@
         <action
             android:id="@+id/yemekDetayFragmentGecis"
             app:destination="@id/yemekDetayFragment2" />
+        <action
+            android:id="@+id/onboardingGecis"
+            app:destination="@id/onboardingFragment2" />
     </fragment>
     <fragment
         android:id="@+id/sepetFragment2"
@@ -45,5 +48,13 @@
         <argument
             android:name="yemekler"
             app:argType="com.example.udemybitirme2.data.entity.Yemekler" />
+    </fragment>
+    <fragment
+        android:id="@+id/onboardingFragment2"
+        android:name="com.example.udemybitirme2.ui.fragment.OnboardingFragment"
+        android:label="OnboardingFragment" >
+        <action
+            android:id="@+id/anasayfaGecis"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
 </navigation>
