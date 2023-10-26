@@ -21,6 +21,7 @@ class YemekDetayFragment : Fragment() {
 
     private lateinit var binding:FragmentYemekDetayBinding
     private lateinit var viewModel:YemekDetayViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_yemek_detay,container,false)
@@ -29,11 +30,16 @@ class YemekDetayFragment : Fragment() {
         val bundle : YemekDetayFragmentArgs by navArgs()
         val yemek = bundle.yemekler
         binding.yemeklerNesnesi = yemek
+
         val url = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
         Glide.with(this).load(url).override(4000,5500).into(binding.imgYemekGorsel)
 
         binding.textViewYemekAdi.text = yemek.yemek_adi
 //        binding.textViewYemekHakkinda.text = "${yemek.yemek_fiyat} ₺"
+
+        viewModel.urunAdet.observe(viewLifecycleOwner){
+            binding.urunAdet = it
+        }
 
         return binding.root
     }
@@ -47,8 +53,17 @@ class YemekDetayFragment : Fragment() {
 
 
     fun sepeteEkle(yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int,yemek_siparis_adet:String,kullanici_adi:String){
-        var adet = 1
-        viewModel.sepeteEkle(yemek_adi,yemek_resim_adi,yemek_fiyat,adet,kullanici_adi)
+
+        viewModel.sepeteEkle(yemek_adi,yemek_resim_adi,yemek_fiyat,yemek_siparis_adet.toInt(),kullanici_adi)
+    }
+
+    fun urunAdetArttir(alinanUrunAdeti:String){
+       viewModel.urunAdetArttir(alinanUrunAdeti)
+    }
+    fun urunAdetAzalt(alinanUrunAdeti:String){
+
+        viewModel.urunAdetAzalt(alinanUrunAdeti)
+
     }
 
 

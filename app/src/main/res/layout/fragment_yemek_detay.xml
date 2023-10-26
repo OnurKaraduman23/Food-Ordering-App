@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+   >
 
     <data>
             <variable name="yemekDetayFragmentNesnesi" type="com.example.udemybitirme2.ui.fragment.YemekDetayFragment" />
             <variable name="yemeklerNesnesi" type="com.example.udemybitirme2.data.entity.Yemekler" />
             <variable name="kullanici_adi" type="String" />
+            <variable
+                name="urunAdet"
+                type="String" />
 
     </data>
 
@@ -145,6 +148,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
                                 android:background="@color/purple_700"
+                                android:onClick="@{() -> yemekDetayFragmentNesnesi.urunAdetAzalt(textViewYemekAdet.getText().toString())}"
                                 android:src="@drawable/ic_decrease" />
                         </LinearLayout>
 
@@ -165,7 +169,7 @@
                                 android:layout_marginBottom="8dp"
                                 android:gravity="center"
                                 android:paddingVertical="@dimen/_5ssp"
-                                android:text="1"
+                                android:text="@{urunAdet.toString()}"
                                 android:textColor="@color/black"
                                 android:textSize="38sp" />
                         </LinearLayout>
@@ -181,6 +185,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
+                                android:onClick="@{()->yemekDetayFragmentNesnesi.urunAdetArttir(textViewYemekAdet.getText().toString())}"
                                 android:background="@color/purple_700"
                                 android:src="@drawable/ic_add" />
                         </LinearLayout>

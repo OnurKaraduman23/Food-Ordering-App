@@ -18,14 +18,20 @@ import dagger.hilt.android.AndroidEntryPoint
 class SepetFragment : Fragment() {
     private lateinit var binding : FragmentSepetBinding
     private lateinit var viewModel : SepetViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_sepet,container,false)
         binding.sepetFragmentNesnesi  = this
 
+        val recyclerView = binding.sepetRV
+        recyclerView.itemAnimator = null
+
         viewModel.sepetListesi.observe(viewLifecycleOwner){
+
             val sepetAdapter = SepetAdapter(requireContext(),it,viewModel)
 //            Log.e("Dante","it ${it[0]}")
+
             binding.myAdapter = sepetAdapter
         }
 
@@ -37,6 +43,8 @@ class SepetFragment : Fragment() {
         val tempViewModel : SepetViewModel by viewModels()
         viewModel = tempViewModel
     }
+
+
 
 
 
