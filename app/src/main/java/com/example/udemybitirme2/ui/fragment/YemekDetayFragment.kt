@@ -55,6 +55,10 @@ class YemekDetayFragment : Fragment() {
     fun sepeteEkle(yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int,yemek_siparis_adet:String,kullanici_adi:String){
 
         viewModel.sepeteEkle(yemek_adi,yemek_resim_adi,yemek_fiyat,yemek_siparis_adet.toInt(),kullanici_adi)
+        var dialog = DialogFragment()
+        val dataToPass = "sepete_eklendi"
+        dialog.setData(dataToPass)
+        dialog.show(parentFragmentManager,"Dialog")
     }
 
     fun urunAdetArttir(alinanUrunAdeti:String){

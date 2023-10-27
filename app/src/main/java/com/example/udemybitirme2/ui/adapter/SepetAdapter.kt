@@ -7,15 +7,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.example.udemybitirme2.R
 import com.example.udemybitirme2.data.entity.SepetYemekler
 import com.example.udemybitirme2.databinding.SepetCardTasarimBinding
+import com.example.udemybitirme2.ui.fragment.DialogFragment
 import com.example.udemybitirme2.ui.viewmodel.SepetViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class SepetAdapter(var mContext:Context, var sepetListesi:List<SepetYemekler>,var viewModel:SepetViewModel) : RecyclerView.Adapter<SepetAdapter.DetayCardNesneleriniTutucu>() {
+class SepetAdapter(var mContext:Context, var sepetListesi:List<SepetYemekler>,var viewModel:SepetViewModel,var frgManager:FragmentManager) : RecyclerView.Adapter<SepetAdapter.DetayCardNesneleriniTutucu>() {
 
     inner class DetayCardNesneleriniTutucu(var tasarim:SepetCardTasarimBinding) : RecyclerView.ViewHolder(tasarim.root)
 
@@ -47,6 +50,10 @@ class SepetAdapter(var mContext:Context, var sepetListesi:List<SepetYemekler>,va
                 .setActionTextColor(Color.BLUE)
                 .setAction("EVET"){
                     viewModel.sepetYemekSil(sepet.sepet_yemek_id,"Dante")
+                    var dialog = DialogFragment()
+                    val dataToPass = "deleted"
+                    dialog.setData(dataToPass)
+                    dialog.show(frgManager,"Dialog")
                 }
 
                 .show()

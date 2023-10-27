@@ -21,18 +21,18 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     private lateinit var it:View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         it = binding.toolbar
-        binding.toolbar.visibility = View.VISIBLE
+
         val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
         val isFirstTime = sharedPref.getBoolean("isFirstTime", true)
 
         if (isFirstTime) {
-//            binding.toolbar.visibility = View.GONE
+            binding.toolbar.visibility = View.GONE
             Log.e("Dante","Onboarding Ekranı")
 
             val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         val toggle = ActionBarDrawerToggle(this,binding.drawer,binding.toolbar,0,0)
         binding.drawer.addDrawerListener(toggle)
         toggle.syncState()
+
     }
 
     override fun onBackPressed() {

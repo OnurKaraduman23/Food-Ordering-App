@@ -37,6 +37,7 @@ class OnboardingFragment : Fragment() {
         binding.buttonGetStarted.setOnClickListener{
 
            Navigation.findNavController(it).navigate(R.id.anasayfaGecis)
+           
         }
 
         return binding.root
