@@ -17,8 +17,11 @@ class YemekDetayViewModel @Inject constructor(var yRepo: YemeklerRepository): Vi
 
     var urunAdet = MutableLiveData<String>()
 
+
     init {
         urunAdet = MutableLiveData<String>("1")
+
+
     }
     fun sepeteEkle(yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int,yemek_siparis_adet:Int,kullanici_adi:String){
         CoroutineScope(Dispatchers.Main).launch {
@@ -28,14 +31,15 @@ class YemekDetayViewModel @Inject constructor(var yRepo: YemeklerRepository): Vi
 
     fun urunAdetArttir(urunAdeti:String){
         urunAdet.value = (urunAdeti.toInt() + 1 ).toString()
-        Log.e("Dante","Urun arttırıldı")
+
     }
     fun urunAdetAzalt(urunAdeti: String){
 
         if (urunAdeti.toInt() >1){
             urunAdet.value=(urunAdeti.toInt() - 1 ).toString()
         }
-        Log.e("Dante","Urun azaltıldı")
 
     }
+
+
 }

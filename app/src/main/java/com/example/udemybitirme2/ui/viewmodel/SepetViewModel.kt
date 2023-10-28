@@ -16,9 +16,13 @@ class SepetViewModel @Inject constructor(var yRepo:YemeklerRepository): ViewMode
 
 
     var sepetListesi = MutableLiveData<List<SepetYemekler>>()
+    var sepetTutariLiveData = MutableLiveData<String>()
+
 
     init {
         sepetYukle("Dante")
+        sepetTutariLiveData = MutableLiveData<String>("0.00")
+
     }
 
     fun sepetYukle(kullaniciAdi:String){
@@ -39,4 +43,10 @@ class SepetViewModel @Inject constructor(var yRepo:YemeklerRepository): ViewMode
             sepetYukle("Dante")
         }
     }
+
+    fun sepetOnayla(){
+
+    }
+
+
 }

@@ -19,7 +19,6 @@
             android:layout_height="300dp"
             android:layout_gravity="center"
             app:lottie_loop="true"
-
             />
 
 

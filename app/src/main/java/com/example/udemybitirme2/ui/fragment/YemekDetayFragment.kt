@@ -26,10 +26,12 @@ class YemekDetayFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_yemek_detay,container,false)
         binding.yemekDetayFragmentNesnesi = this
+
         binding.kullaniciAdi = "Dante"
         val bundle : YemekDetayFragmentArgs by navArgs()
         val yemek = bundle.yemekler
         binding.yemeklerNesnesi = yemek
+        binding.urunTotalFiyat = binding.textViewYemekFiyat.text.toString()
 
         val url = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
         Glide.with(this).load(url).override(4000,5500).into(binding.imgYemekGorsel)
@@ -39,7 +41,13 @@ class YemekDetayFragment : Fragment() {
 
         viewModel.urunAdet.observe(viewLifecycleOwner){
             binding.urunAdet = it
+            binding.urunTotalFiyat = (it.toInt() * yemek.yemek_fiyat).toString() + " ₺"
+
         }
+
+
+
+
 
         return binding.root
     }
@@ -69,6 +77,7 @@ class YemekDetayFragment : Fragment() {
         viewModel.urunAdetAzalt(alinanUrunAdeti)
 
     }
+
 
 
 

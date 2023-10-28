@@ -24,7 +24,7 @@ class DialogFragment : DialogFragment() {
             "siparis_verildi" -> R.raw.siparis_verildi
             "deleted"->R.raw.deleted
 
-            else -> R.raw.onboarding3
+            else -> R.raw.error_anim
         }
         binding.animation.setAnimation(animationResourceId)
         binding.animation.playAnimation()

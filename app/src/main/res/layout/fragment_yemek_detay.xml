@@ -7,9 +7,8 @@
             <variable name="yemekDetayFragmentNesnesi" type="com.example.udemybitirme2.ui.fragment.YemekDetayFragment" />
             <variable name="yemeklerNesnesi" type="com.example.udemybitirme2.data.entity.Yemekler" />
             <variable name="kullanici_adi" type="String" />
-            <variable
-                name="urunAdet"
-                type="String" />
+            <variable name="urunAdet" type="String" />
+            <variable name="urunTotalFiyat" type="String" />
 
     </data>
 
@@ -153,7 +152,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/_10sdp"
@@ -330,6 +329,7 @@
                     android:fontFamily="@font/gilroy_bold"
                     android:paddingStart="@dimen/_10sdp"
                     android:text="Ingredients"
+
                     android:textColor="@color/black"
                     android:textSize="@dimen/_15ssp" />
 
@@ -343,17 +343,19 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:padding="10dp"
                         android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textViewMalzemeler"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:textSize="@dimen/_10ssp"
                             android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s"
                             android:textColor="@color/hintTextColor"
                             android:textStyle="bold"
                             android:fontFamily="@font/gilroy_light"
+
                             android:paddingTop="@dimen/_10sdp"
                             android:paddingStart="@dimen/_5sdp"
                             android:paddingBottom="@dimen/_10sdp" />
@@ -437,7 +439,7 @@
                 android:fontFamily="@font/caveat_bold"
                 android:paddingLeft="20dp"
                 android:paddingRight="26dp"
-                android:text="100 ₺"
+                android:text="@{urunTotalFiyat}"
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold" />

@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SepetFragment : Fragment() {
     private lateinit var binding : FragmentSepetBinding
     private lateinit var viewModel : SepetViewModel
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_sepet,container,false)
         binding.sepetFragmentNesnesi  = this
@@ -27,6 +28,10 @@ class SepetFragment : Fragment() {
         viewModel.sepetListesi.observe(viewLifecycleOwner){
             val sepetAdapter = SepetAdapter(requireContext(),it,viewModel,parentFragmentManager)
             binding.myAdapter = sepetAdapter
+
+        }
+        viewModel.sepetTutariLiveData.observe(viewLifecycleOwner){
+            binding.textViewToplamTutar.text = it
         }
 
 
@@ -39,12 +44,17 @@ class SepetFragment : Fragment() {
         viewModel = tempViewModel
     }
 
+    fun sepetiOnayla(){
+        viewModel.sepetOnayla()
+        animasyonGoster()
+    }
 
-
-
-
-
-
+    fun animasyonGoster(){
+        var dialog = DialogFragment()
+        val dataToPass = "siparis_verildi"
+        dialog.setData(dataToPass)
+        dialog.show(parentFragmentManager,"Dialog")
+    }
 
 
 
