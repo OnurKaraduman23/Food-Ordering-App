@@ -21,17 +21,13 @@ class SepetFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_sepet,container,false)
         binding.sepetFragmentNesnesi  = this
-        val recyclerView = binding.sepetRV
-        recyclerView.itemAnimator = null
 
         viewModel.sepetListesi.observe(viewLifecycleOwner){
-
                 val sepetAdapter = SepetAdapter(requireContext(),it,viewModel,parentFragmentManager)
                 binding.myAdapter = sepetAdapter
-
         }
         viewModel.sepetTutariLiveData.observe(viewLifecycleOwner){
-            binding.textViewToplamTutar.text = "$it ₺"
+            binding.textViewTT = "$it ₺"
         }
 
 

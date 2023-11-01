@@ -32,26 +32,21 @@ class DialogFragment : DialogFragment() {
             override fun onAnimationStart(animation: Animator) {
 
             }
-
             override fun onAnimationEnd(animation: Animator) {
                 dismiss()
             }
-
             override fun onAnimationCancel(animation: Animator) {
 
             }
-
             override fun onAnimationRepeat(animation: Animator) {
                 dismiss()
             }
-
         })
 
         return binding.root
 
     }
     fun setData(data: String) {
-        // Veriyi burada işleyebilirsiniz
        gelenAnimasyonString = data
     }
 

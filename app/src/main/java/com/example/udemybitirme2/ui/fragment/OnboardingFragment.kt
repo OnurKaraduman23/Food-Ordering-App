@@ -18,46 +18,39 @@ import com.example.udemybitirme2.data.onboarding.OnBoardingItem
 import com.example.udemybitirme2.databinding.FragmentOnboardingBinding
 import com.example.udemybitirme2.ui.adapter.OnboardingScreenAdapter
 
-
 class OnboardingFragment : Fragment() {
     private lateinit var binding : FragmentOnboardingBinding
-    private  lateinit var onboadringItemsAdapter: OnboardingScreenAdapter
+    private  val onboadringItemsAdapter: OnboardingScreenAdapter by lazy { OnboardingScreenAdapter() }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_onboarding,container,false)
+        binding.onBoardingFragmentNesnesi=this
         setOnBoardingItems()
         setupIndicators()
         setCurrentIndicator(0)
-
-        binding.buttonGetStarted.setOnClickListener{
-            (requireActivity() as MainActivity).setToolbarVisibility(true) // Toolbar'ı görünür yap
-            Navigation.findNavController(it).navigate(R.id.anasayfaGecis)
-
-           
-        }
 
         return binding.root
     }
 
     fun setOnBoardingItems() {
-        onboadringItemsAdapter = OnboardingScreenAdapter(requireContext(),
-            listOf(
-                OnBoardingItem(
-                    onboaringImage = R.raw.onboarding1,
-                    title = "Manage Your Task" ,
-                    description = "Organize all your to do's and projects. Color tah them set priorities and categories"
-                ),
-                OnBoardingItem(
-                    onboaringImage = R.raw.onboarding2,
-                    title = "Work On Time" ,
-                    description = "When you're overwhelmed by the amount of work you have on your plate, stop and rethink"
-                ),
-                OnBoardingItem(
-                    onboaringImage = R.raw.onboarding3,
-                    title = "Get Reminder On Time" ,
-                    description = "When you encounter a small task that less than 5 minutes to complete"
-                )
-            ))
+        onboadringItemsAdapter.submitList(listOf(
+            OnBoardingItem(
+                onboaringImage = R.raw.onboarding1,
+                title = "Manage Your Task" ,
+                description = "Organize all your to do's and projects. Color tah them set priorities and categories"
+            ),
+            OnBoardingItem(
+                onboaringImage = R.raw.onboarding2,
+                title = "Work On Time" ,
+                description = "When you're overwhelmed by the amount of work you have on your plate, stop and rethink"
+            ),
+            OnBoardingItem(
+                onboaringImage = R.raw.onboarding3,
+                title = "Get Reminder On Time" ,
+                description = "When you encounter a small task that less than 5 minutes to complete"
+            )
+        ))
+
 
         binding.onboardingViewPager.adapter=onboadringItemsAdapter
         binding.onboardingViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
@@ -70,7 +63,6 @@ class OnboardingFragment : Fragment() {
             RecyclerView.OVER_SCROLL_NEVER
 
     }
-
 
     private fun setupIndicators() {
         val indicators = arrayOfNulls<ImageView>(onboadringItemsAdapter.itemCount)
@@ -115,6 +107,11 @@ class OnboardingFragment : Fragment() {
                 )
             }
         }
+    }
+
+    fun getStartedAndSkip(it:View){
+        (requireActivity() as MainActivity).setToolbarVisibility(true) // Toolbar'ı görünür yap
+        Navigation.findNavController(it).navigate(R.id.anasayfaGecis)
     }
 
 }

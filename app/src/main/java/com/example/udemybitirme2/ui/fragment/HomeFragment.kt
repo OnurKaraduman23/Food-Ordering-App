@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home,container,false)
         binding.homeFragmentNesnesi=this
-        binding.recyclerView2.adapter = adapter
+        binding.myAdapter = adapter
 
         viewModel.yemeklerListesi.observe(viewLifecycleOwner){yemekler->
             adapter.submitList(yemekler)
@@ -38,12 +38,10 @@ class HomeFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                        val filteredList = aramaListesi.filter { it.yemek_adi.lowercase().contains(s.toString().lowercase()) }
-                        adapter.submitList(filteredList)
 
-
+                val filteredList = aramaListesi.filter { it.yemek_adi.lowercase().contains(s.toString().lowercase()) }
+                adapter.submitList(filteredList)
 
             }
 
@@ -51,61 +49,16 @@ class HomeFragment : Fragment() {
 
             }
 
-
         })
-
-
-
-
-//        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String): Boolean {
-//                // Arama metni değiştiğinde bu bölüm çalışır.
-//                val filteredList = mutableListOf<Yemekler>()
-//                for (yemek in aramaListesi) {
-//                    // Yemek adı aramasını burada gerçekleştirin.
-//                    if (yemek.yemek_adi.contains(query, ignoreCase = true)) {
-//                        filteredList.add(yemek)
-//                        Log.e("Dante","$filteredList")
-//                        val adapter = YemeklerAdapter(requireContext(), filteredList, viewModel)
-//                        binding.recyclerView2.adapter = adapter
-//                    }
-//                }
-//
-//
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String): Boolean {
-//                // Arama metni değiştiğinde bu bölüm çalışır.
-//
-//                val filteredList = mutableListOf<Yemekler>()
-//                for (yemek in aramaListesi) {
-//                    // Yemek adı aramasını burada gerçekleştirin.
-//                    if (yemek.yemek_adi.contains(newText, ignoreCase = true)) {
-//                        filteredList.add(yemek)
-//                        val adapter = YemeklerAdapter(requireContext(), filteredList, viewModel)
-//                        Log.e("Dante","${yemek.yemek_adi}")
-//                        binding.recyclerView2.adapter = adapter
-//                    }
-//                }
-//                return true
-//            }
-//        })
-
-
 
         return binding.root
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tempViewModel : HomeViewModel by viewModels()
         viewModel = tempViewModel
     }
-
-
-
 
 }
 

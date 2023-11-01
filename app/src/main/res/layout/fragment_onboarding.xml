@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+            <variable
+                name="onBoardingFragmentNesnesi"
+                type="com.example.udemybitirme2.ui.fragment.OnboardingFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +41,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="20dp"
             android:text="@string/skip"
+            android:onClick="@{()->onBoardingFragmentNesnesi.getStartedAndSkip(textSkip)}"
             android:textColor="@color/custom_color_primary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,6 +86,7 @@
             android:layout_marginBottom="50dp"
             android:paddingEnd="40dp"
             android:paddingStart="40dp"
+            android:onClick="@{()->onBoardingFragmentNesnesi.getStartedAndSkip(buttonGetStarted)}"
             android:text="@string/get_started"
             android:textAllCaps="false"
             android:textSize="14sp"

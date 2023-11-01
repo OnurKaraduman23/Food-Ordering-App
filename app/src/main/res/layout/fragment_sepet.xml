@@ -6,6 +6,7 @@
     <data>
             <variable name="sepetFragmentNesnesi" type="com.example.udemybitirme2.ui.fragment.SepetFragment" />
             <variable name="myAdapter" type="com.example.udemybitirme2.ui.adapter.SepetAdapter" />
+            <variable name="textViewTT" type="String" />
 
     </data>
 
@@ -57,7 +58,7 @@
 
                     android:layout_marginEnd="32dp"
                     android:fontFamily="@font/gilroy_bold"
-                    android:text="0 ₺"
+                    android:text="@{textViewTT}"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/textView9"

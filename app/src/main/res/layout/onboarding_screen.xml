@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+            <variable
+                name="onBoardingNesnesi"
+                type="com.example.udemybitirme2.data.onboarding.OnBoardingItem" />
+            <variable name="title" type="String" />
+            <variable name="description" type="String" />
     </data>
 
     <LinearLayout
@@ -19,7 +23,6 @@
             android:padding="10dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-
             android:layout_gravity="center"
             android:contentDescription="@string/app_name"/>
 
@@ -30,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center"
+            android:text="@{onBoardingNesnesi.title}"
             android:textColor="@color/custom_color_text_primary"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -42,6 +46,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
             android:gravity="center"
+            android:text="@{onBoardingNesnesi.description}"
             android:textColor="@color/custom_color_text_secondary"
             android:textSize="16sp" />
 

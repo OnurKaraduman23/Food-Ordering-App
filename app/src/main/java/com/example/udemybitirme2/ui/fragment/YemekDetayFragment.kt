@@ -29,23 +29,16 @@ class YemekDetayFragment : Fragment() {
         val bundle : YemekDetayFragmentArgs by navArgs()
         val yemek = bundle.yemekler
         binding.yemeklerNesnesi = yemek
-        binding.urunTotalFiyat = binding.textViewYemekFiyat.text.toString()
+        binding.urunTotalFiyat = yemek.yemek_fiyat.toString()
 
         val url = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
         Glide.with(this).load(url).override(4000,5500).into(binding.imgYemekGorsel)
-
-        binding.textViewYemekAdi.text = yemek.yemek_adi
-//        binding.textViewYemekHakkinda.text = "${yemek.yemek_fiyat} ₺"
 
         viewModel.urunAdet.observe(viewLifecycleOwner){
             binding.urunAdet = it
             binding.urunTotalFiyat = (it.toInt() * yemek.yemek_fiyat).toString() + " ₺"
 
         }
-
-
-
-
 
         return binding.root
     }
@@ -55,8 +48,6 @@ class YemekDetayFragment : Fragment() {
         val tempViewModel : YemekDetayViewModel by viewModels()
         viewModel = tempViewModel
     }
-
-
 
     fun sepeteEkle(yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int,yemek_siparis_adet:String,kullanici_adi:String){
 
@@ -71,13 +62,7 @@ class YemekDetayFragment : Fragment() {
        viewModel.urunAdetArttir(alinanUrunAdeti)
     }
     fun urunAdetAzalt(alinanUrunAdeti:String){
-
         viewModel.urunAdetAzalt(alinanUrunAdeti)
-
     }
-
-
-
-
 
 }

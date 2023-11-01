@@ -9,6 +9,7 @@
             <variable name="kullanici_adi" type="String" />
             <variable name="urunAdet" type="String" />
             <variable name="urunTotalFiyat" type="String" />
+            <variable name="textViewYemekAd" type="String" />
 
     </data>
 

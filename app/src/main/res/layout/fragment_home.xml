@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="homeFragmentNesnesi"
-            type="com.example.udemybitirme2.ui.fragment.HomeFragment" />
+        <variable name="homeFragmentNesnesi" type="com.example.udemybitirme2.ui.fragment.HomeFragment" />
+        <variable name="myAdapter" type="com.example.udemybitirme2.ui.adapter.YemeklerAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +30,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView2"
+            android:adapter="@{myAdapter}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:orientation="vertical"

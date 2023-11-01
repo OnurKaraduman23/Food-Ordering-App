@@ -34,15 +34,12 @@ class YemeklerAdapter:RecyclerView.Adapter<YemeklerAdapter.CardTasarimNesnelerin
             }
 
             tasarim.imageViewYemek.setOnClickListener {
-
                 val gecis = AnasayfaFragmentDirections.yemekDetayFragmentGecis(yemek)
                 Navigation.findNavController(it).navigate(gecis)
-
             }
         }
 
         }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTasarimNesneleriniTutucu {
         val binding : CardYemekTasarimBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),

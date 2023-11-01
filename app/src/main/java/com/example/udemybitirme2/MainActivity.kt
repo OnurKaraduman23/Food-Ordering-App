@@ -16,32 +16,41 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private lateinit var it:View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
-        it = binding.toolbar
 
         val sharedPref = getSharedPreferences("MyAppPreferences", Context.MODE_PRIVATE)
         val isFirstTime = sharedPref.getBoolean("isFirstTime", true)
 
         if (isFirstTime) {
-            binding.toolbar.visibility = View.GONE
-            Log.e("Dante","Onboarding Ekranı")
+            withOnBoardingStartNavigation()
 
-            val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
-            val navController = navHostFragment.navController
-            navController.navigate(R.id.onboardingGecis)
 
-            // Bayrağı güncelle
             with(sharedPref.edit()) {
                 putBoolean("isFirstTime", false)
                 apply()
             }
         }
+        startNavigation()
+        toggleDrawer()
+
+
+    }
+
+    fun startNavigation(){
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         NavigationUI.setupWithNavController(binding.navigationView,navHostFragment.navController)
+    }
+    fun withOnBoardingStartNavigation(){
+        binding.toolbar.visibility = View.GONE
+        Log.e("Dante","Onboarding Ekranı")
 
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFragment.navController
+        navController.navigate(R.id.onboardingGecis)
+    }
+    fun toggleDrawer(){
         val toggle = ActionBarDrawerToggle(this,binding.drawer,binding.toolbar,0,0)
         binding.drawer.addDrawerListener(toggle)
         toggle.syncState()

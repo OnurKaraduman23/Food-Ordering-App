@@ -18,10 +18,9 @@ class HomeViewModel @Inject constructor(var yRepo:YemeklerRepository) : ViewMode
 
     var yemeklerListesi = MutableLiveData<List<Yemekler>>()
 
-
-
     init {
         yemekleriYukle()
+
     }
     fun yemekleriYukle(){
         CoroutineScope(Dispatchers.Main).launch {
@@ -32,8 +31,6 @@ class HomeViewModel @Inject constructor(var yRepo:YemeklerRepository) : ViewMode
             }
         }
     }
-
-
 
 
 
