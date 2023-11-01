@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
+import com.example.udemybitirme2.MainActivity
 import com.example.udemybitirme2.R
 import com.example.udemybitirme2.databinding.FragmentAnasayfaBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,9 +26,6 @@ class AnasayfaFragment : Fragment() {
         it = binding.fab
         binding.fragmentAnsayayfaNesnesi = this
         binding.bottomNavigationView.background = null
-//        MainActivity().binding.toolbar.visibility = View.VISIBLE
-
-
 
         binding.bottomNavigationView.setOnItemSelectedListener {item ->
 
@@ -38,7 +36,6 @@ class AnasayfaFragment : Fragment() {
                 R.id.action_restaurant -> openFragment(RestoranFragment())
             }
             true
-
         }
         fragmentManager = childFragmentManager
         openFragment(HomeFragment())
@@ -55,6 +52,8 @@ class AnasayfaFragment : Fragment() {
         fragmentTransaction.replace(R.id.navHostFragment,fragment)
         fragmentTransaction.commit()
     }
+
+
 
 
 

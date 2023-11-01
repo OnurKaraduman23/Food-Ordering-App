@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-
         android:usesCleartextTraffic="true"
         android:name=".di.HiltApplication"
         android:allowBackup="true"
@@ -17,12 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UdemyBitirme2"
         tools:targetApi="31">
+        <!-- MainActivity için windowSoftInputMode özelliği eklenmiştir -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustUnspecified">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,5 +30,4 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>

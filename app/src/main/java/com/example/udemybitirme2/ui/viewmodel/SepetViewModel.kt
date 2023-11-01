@@ -21,7 +21,7 @@ class SepetViewModel @Inject constructor(var yRepo:YemeklerRepository): ViewMode
 
     init {
         sepetYukle("Dante")
-        sepetTutariLiveData = MutableLiveData<String>("0.00")
+        sepetTutariLiveData = MutableLiveData<String>()
 
     }
 

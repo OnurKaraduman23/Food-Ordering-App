@@ -1,15 +1,17 @@
 package com.example.udemybitirme2.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.udemybitirme2.data.entity.Yemekler
 import com.example.udemybitirme2.data.repo.YemeklerRepository
+import com.example.udemybitirme2.ui.adapter.YemeklerAdapter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
+import kotlin.Exception
 
 
 @HiltViewModel
@@ -17,6 +19,8 @@ class HomeViewModel @Inject constructor(var yRepo:YemeklerRepository) : ViewMode
 
 
     var yemeklerListesi = MutableLiveData<List<Yemekler>>()
+
+
 
     init {
         yemekleriYukle()
@@ -30,5 +34,9 @@ class HomeViewModel @Inject constructor(var yRepo:YemeklerRepository) : ViewMode
             }
         }
     }
+
+
+
+
 
 }

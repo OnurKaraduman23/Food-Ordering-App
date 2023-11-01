@@ -27,10 +27,12 @@ class SepetAdapter(var mContext:Context, var sepetListesi:List<SepetYemekler>,va
     }
 
     override fun getItemCount(): Int {
+
         return sepetListesi.size
     }
 
     override fun onBindViewHolder(holder: DetayCardNesneleriniTutucu, position: Int) {
+
         val sepet = sepetListesi.get(position)
         val t = holder.tasarim
         val urunAdetliFiyat =  (sepet.yemek_fiyat * sepet.yemek_siparis_adet)
@@ -55,7 +57,12 @@ class SepetAdapter(var mContext:Context, var sepetListesi:List<SepetYemekler>,va
                 .setTextColor(Color.RED)
                 .setActionTextColor(Color.BLUE)
                 .setAction("EVET"){
+                    if (sepetListesi.size == 1){
+                        viewModel.sepetListesi.value = emptyList()
+                        viewModel.sepetTutariLiveData.value = "0"
+                    }
                     viewModel.sepetYemekSil(sepet.sepet_yemek_id,"Dante")
+                    viewModel.sepetYukle("Dante")
                     var dialog = DialogFragment()
                     val dataToPass = "deleted"
                     dialog.setData(dataToPass)

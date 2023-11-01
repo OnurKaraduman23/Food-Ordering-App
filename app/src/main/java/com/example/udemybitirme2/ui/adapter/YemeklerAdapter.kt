@@ -15,12 +15,39 @@ import com.example.udemybitirme2.ui.fragment.AnasayfaFragmentDirections
 import com.example.udemybitirme2.ui.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class YemeklerAdapter(var mContext:Context, var yemeklerListesi:List<Yemekler>,var viewModel: HomeViewModel):RecyclerView.Adapter<YemeklerAdapter.CardTasarimNesneleriniTutucu>() {
+class YemeklerAdapter:RecyclerView.Adapter<YemeklerAdapter.CardTasarimNesneleriniTutucu>() {
 
-    inner class CardTasarimNesneleriniTutucu(var tasarim:CardYemekTasarimBinding):RecyclerView.ViewHolder(tasarim.root)
+    private var yemeklerListesi : MutableList<Yemekler> = mutableListOf()
+    inner class CardTasarimNesneleriniTutucu(var tasarim:CardYemekTasarimBinding):RecyclerView.ViewHolder(tasarim.root){
+        fun bind(yemek: Yemekler){
+
+            tasarim.yemekNesnesi = yemek
+
+
+            val yemeklerUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
+            Glide.with(tasarim.root.context).load(yemeklerUrl).override(500,750).into(tasarim.imageViewYemek)
+            tasarim.imageView.setOnClickListener {
+                Snackbar.make(it,"${yemek.yemek_adi} Sepete Eklendi", Snackbar.LENGTH_SHORT)
+                    .setBackgroundTint(Color.WHITE)
+                    .setTextColor(Color.BLUE)
+                    .setActionTextColor(Color.RED)
+                    .show()
+
+            }
+
+            tasarim.imageViewYemek.setOnClickListener {
+
+                val gecis = AnasayfaFragmentDirections.yemekDetayFragmentGecis(yemek)
+                Navigation.findNavController(it).navigate(gecis)
+
+            }
+        }
+
+        }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardTasarimNesneleriniTutucu {
-        val binding : CardYemekTasarimBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext),
+        val binding : CardYemekTasarimBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context),
             R.layout.card_yemek_tasarim,parent,false)
         return CardTasarimNesneleriniTutucu(binding)
     }
@@ -30,30 +57,14 @@ class YemeklerAdapter(var mContext:Context, var yemeklerListesi:List<Yemekler>,v
     }
 
     override fun onBindViewHolder(holder: CardTasarimNesneleriniTutucu, position: Int) {
-        val yemek = yemeklerListesi.get(position)
-        val t = holder.tasarim
-
-        t.yemekNesnesi = yemek
-
-
-        val yemeklerUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
-        Glide.with(mContext).load(yemeklerUrl).override(500,750).into(t.imageViewYemek)
-        t.imageView.setOnClickListener {
-            Snackbar.make(it,"${yemek.yemek_adi} Sepete Eklendi", Snackbar.LENGTH_SHORT)
-                .setBackgroundTint(Color.WHITE)
-                .setTextColor(Color.BLUE)
-                .setActionTextColor(Color.RED)
-                .show()
-
-        }
-
-        t.imageViewYemek.setOnClickListener {
-
-            val gecis = AnasayfaFragmentDirections.yemekDetayFragmentGecis(yemek)
-            Navigation.findNavController(it).navigate(gecis)
-
-        }
+      holder.bind(yemeklerListesi.get(position))
     }
 
+
+    fun submitList(yemekler:List<Yemekler>){
+        yemeklerListesi.clear()
+        yemeklerListesi.addAll(yemekler)
+        this.notifyDataSetChanged()
+    }
 
 }

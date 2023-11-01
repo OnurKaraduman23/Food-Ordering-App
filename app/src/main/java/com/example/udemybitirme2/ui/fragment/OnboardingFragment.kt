@@ -35,8 +35,9 @@ class OnboardingFragment : Fragment() {
         setCurrentIndicator(0)
 
         binding.buttonGetStarted.setOnClickListener{
+            (requireActivity() as MainActivity).setToolbarVisibility(true) // Toolbar'ı görünür yap
+            Navigation.findNavController(it).navigate(R.id.anasayfaGecis)
 
-           Navigation.findNavController(it).navigate(R.id.anasayfaGecis)
            
         }
 

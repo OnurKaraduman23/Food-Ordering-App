@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.udemybitirme2.R
 import com.example.udemybitirme2.databinding.FragmentSepetBinding
 import com.example.udemybitirme2.ui.adapter.SepetAdapter
@@ -26,12 +27,13 @@ class SepetFragment : Fragment() {
         recyclerView.itemAnimator = null
 
         viewModel.sepetListesi.observe(viewLifecycleOwner){
-            val sepetAdapter = SepetAdapter(requireContext(),it,viewModel,parentFragmentManager)
-            binding.myAdapter = sepetAdapter
+
+                val sepetAdapter = SepetAdapter(requireContext(),it,viewModel,parentFragmentManager)
+                binding.myAdapter = sepetAdapter
 
         }
         viewModel.sepetTutariLiveData.observe(viewLifecycleOwner){
-            binding.textViewToplamTutar.text = it
+            binding.textViewToplamTutar.text = "$it ₺"
         }
 
 

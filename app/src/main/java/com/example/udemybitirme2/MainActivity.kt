@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity() {
             val navController = navHostFragment.navController
             navController.navigate(R.id.onboardingGecis)
 
-
-
             // Bayrağı güncelle
             with(sharedPref.edit()) {
                 putBoolean("isFirstTime", false)
@@ -66,6 +64,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun setToolbarVisibility(isVisible: Boolean) {
+        binding.toolbar.visibility = if (isVisible) View.VISIBLE else View.GONE
+    }
 
 
 
