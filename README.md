@@ -7,7 +7,7 @@ Designed with MVVM architecture, the app offers users a seamless approach to ord
 
 
 ## Screenshots
-| On Boarding                                                                            | Media List                                                                           | Media Detail                                                                             | Search                                                                              | Settings                                                                                |
+| On Boarding                                                                            | Home                                                                         | Food Detail                                                                             | Drawer                                                                              | Cart                                                                                |
 |---------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|
 |<img src="https://github.com/Honor13/Food-Ordering-App/assets/53227891/b3df5333-3520-42f2-9f95-c8a43e1778f3" alt="On Boarding" style="width:200px"/> 
 
