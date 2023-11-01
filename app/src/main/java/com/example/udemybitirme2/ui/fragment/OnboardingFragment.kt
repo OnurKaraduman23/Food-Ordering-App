@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.udemybitirme2.MainActivity
 import com.example.udemybitirme2.R
 import com.example.udemybitirme2.data.onboarding.OnBoardingItem
+import com.example.udemybitirme2.data.util.gecisYap
 import com.example.udemybitirme2.databinding.FragmentOnboardingBinding
 import com.example.udemybitirme2.ui.adapter.OnboardingScreenAdapter
 
@@ -36,8 +37,8 @@ class OnboardingFragment : Fragment() {
         onboadringItemsAdapter.submitList(listOf(
             OnBoardingItem(
                 onboaringImage = R.raw.onboarding1,
-                title = "Manage Your Task" ,
-                description = "Organize all your to do's and projects. Color tah them set priorities and categories"
+                title = "Order Now" ,
+                description = "Your food at your door before it gets cold. Order now"
             ),
             OnBoardingItem(
                 onboaringImage = R.raw.onboarding2,
@@ -111,7 +112,8 @@ class OnboardingFragment : Fragment() {
 
     fun getStartedAndSkip(it:View){
         (requireActivity() as MainActivity).setToolbarVisibility(true) // Toolbar'ı görünür yap
-        Navigation.findNavController(it).navigate(R.id.anasayfaGecis)
+        Navigation.gecisYap(it,R.id.anasayfaGecis)
+
     }
 
 }

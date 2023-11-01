@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.udemybitirme2.R
 import com.example.udemybitirme2.data.entity.Yemekler
+import com.example.udemybitirme2.data.util.gecisYap
 import com.example.udemybitirme2.databinding.CardYemekTasarimBinding
 import com.example.udemybitirme2.ui.fragment.AnasayfaFragmentDirections
 import com.google.android.material.snackbar.Snackbar
@@ -35,7 +36,7 @@ class YemeklerAdapter:RecyclerView.Adapter<YemeklerAdapter.CardTasarimNesnelerin
 
             tasarim.imageViewYemek.setOnClickListener {
                 val gecis = AnasayfaFragmentDirections.yemekDetayFragmentGecis(yemek)
-                Navigation.findNavController(it).navigate(gecis)
+                Navigation.gecisYap(it,gecis)
             }
         }
 
