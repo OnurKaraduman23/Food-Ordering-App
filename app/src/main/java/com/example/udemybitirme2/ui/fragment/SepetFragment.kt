@@ -22,8 +22,9 @@ class SepetFragment : Fragment() {
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_sepet,container,false)
         binding.sepetFragmentNesnesi  = this
 
-        viewModel.sepetListesi.observe(viewLifecycleOwner){
-                val sepetAdapter = SepetAdapter(requireContext(),it,viewModel,parentFragmentManager)
+        viewModel.sepetListesi.observe(viewLifecycleOwner){sepet->
+                val sepetAdapter = SepetAdapter(viewModel,parentFragmentManager)
+                sepetAdapter.submitList(sepet)
                 binding.myAdapter = sepetAdapter
         }
         viewModel.sepetTutariLiveData.observe(viewLifecycleOwner){

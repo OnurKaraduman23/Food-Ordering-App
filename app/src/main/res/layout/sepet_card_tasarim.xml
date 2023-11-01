@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable name="sepetYemeklerNesnesi" type="com.example.udemybitirme2.data.entity.SepetYemekler" />
+        <variable
+            name="yemekTotalFiyat"
+            type="String" />
     </data>
 
     <LinearLayout
@@ -48,7 +51,7 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:fontFamily="@font/gilroy_bold"
-                    android:text="Izgara Tavuk"
+                    android:text="@{sepetYemeklerNesnesi.yemek_adi}"
                     app:layout_constraintStart_toEndOf="@+id/imageViewYemekResimSepet"
                     app:layout_constraintTop_toTopOf="@+id/imageViewYemekResimSepet" />
 
@@ -70,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="₺ 50"
+                    android:text='@{sepetYemeklerNesnesi.yemek_fiyat + " ₺"}'
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     app:layout_constraintBottom_toBottomOf="@+id/textView10"
@@ -95,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="2"
+                    android:text='@{sepetYemeklerNesnesi.yemek_siparis_adet+""}'
                     android:textSize="14sp"
                     android:fontFamily="@font/ibm_plex_mono"
                     android:textColor="@color/black"
@@ -118,7 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="100 ₺"
+                    android:text="@{yemekTotalFiyat}"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp"
                     android:textStyle="bold"

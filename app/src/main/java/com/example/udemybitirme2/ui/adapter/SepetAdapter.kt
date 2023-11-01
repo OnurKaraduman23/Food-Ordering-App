@@ -1,6 +1,6 @@
 package com.example.udemybitirme2.ui.adapter
 
-import android.content.Context
+
 import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,12 +16,51 @@ import com.example.udemybitirme2.ui.fragment.DialogFragment
 import com.example.udemybitirme2.ui.viewmodel.SepetViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class SepetAdapter(var mContext:Context, var sepetListesi:List<SepetYemekler>,var viewModel:SepetViewModel,var frgManager:FragmentManager) : RecyclerView.Adapter<SepetAdapter.DetayCardNesneleriniTutucu>() {
+class SepetAdapter(var viewModel:SepetViewModel,var frgManager:FragmentManager) : RecyclerView.Adapter<SepetAdapter.DetayCardNesneleriniTutucu>() {
+
+    private var sepetListesi : MutableList<SepetYemekler> = mutableListOf()
     var toplam = 0
-    inner class DetayCardNesneleriniTutucu(var tasarim:SepetCardTasarimBinding) : RecyclerView.ViewHolder(tasarim.root)
+    inner class DetayCardNesneleriniTutucu(var tasarim:SepetCardTasarimBinding) : RecyclerView.ViewHolder(tasarim.root){
+
+        fun bind(sepet:SepetYemekler){
+            tasarim.sepetYemeklerNesnesi = sepet
+            val urunAdetliFiyat =  (sepet.yemek_fiyat * sepet.yemek_siparis_adet)
+
+            tasarim.sepetYemeklerNesnesi = sepet
+            toplam = urunAdetliFiyat + toplam
+            tasarim.yemekTotalFiyat = "$urunAdetliFiyat ₺"
+            Log.e("Dante","${sepet.kullanici_adi} - ${sepet.yemek_adi}")
+
+            viewModel.sepetTutariLiveData.value = toplam.toString()
+
+            val yemeklerUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${sepet.yemek_resim_adi}"
+            Glide.with(tasarim.root.context).load(yemeklerUrl).override(500,750).into(tasarim.imageViewYemekResimSepet)
+
+            tasarim.imageViewSilSepet.setOnClickListener{
+                Snackbar.make(it,"${sepet.yemek_adi} silinsin mi?", Snackbar.LENGTH_SHORT)
+                    .setBackgroundTint(Color.GRAY)
+                    .setTextColor(Color.RED)
+                    .setActionTextColor(Color.BLUE)
+                    .setAction("EVET"){
+                        if (sepetListesi.size == 1){
+                            viewModel.sepetListesi.value = emptyList()
+                            viewModel.sepetTutariLiveData.value = "0"
+                        }
+                        viewModel.sepetYemekSil(sepet.sepet_yemek_id,"Dante")
+                        viewModel.sepetYukle("Dante")
+                        val dialog = DialogFragment()
+                        val dataToPass = "deleted"
+                        dialog.setData(dataToPass)
+                        dialog.show(frgManager,"Dialog")
+                    }
+
+                    .show()
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetayCardNesneleriniTutucu {
-        val binding :SepetCardTasarimBinding = DataBindingUtil.inflate(LayoutInflater.from(mContext), R.layout.sepet_card_tasarim,parent,false)
+        val binding :SepetCardTasarimBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.sepet_card_tasarim,parent,false)
         return DetayCardNesneleriniTutucu(binding)
     }
 
@@ -32,43 +71,10 @@ class SepetAdapter(var mContext:Context, var sepetListesi:List<SepetYemekler>,va
 
     override fun onBindViewHolder(holder: DetayCardNesneleriniTutucu, position: Int) {
 
-        val sepet = sepetListesi.get(position)
-        val t = holder.tasarim
-        val urunAdetliFiyat =  (sepet.yemek_fiyat * sepet.yemek_siparis_adet)
+        holder.bind(sepetListesi.get(position))
+    }
 
-        toplam = urunAdetliFiyat + toplam
-        Log.e("Dante","Toplam Seepet Tutarı $toplam")
-        t.textViewFiyatSepet.text = sepet.yemek_fiyat.toString()
-        t.textViewAdetSepet.text = sepet.yemek_siparis_adet.toString()
-        t.textViewYemekAdiSepet.text = sepet.yemek_adi
-        t.textViewAdetxFiyat.text = "$urunAdetliFiyat ₺"
-        Log.e("Dante","${sepet.kullanici_adi} - ${sepet.yemek_adi}")
-
-       viewModel.sepetTutariLiveData.value = toplam.toString()
-
-
-        val yemeklerUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${sepet.yemek_resim_adi}"
-        Glide.with(mContext).load(yemeklerUrl).override(500,750).into(t.imageViewYemekResimSepet)
-
-        t.imageViewSilSepet.setOnClickListener{
-            Snackbar.make(it,"${sepet.yemek_adi} silinsin mi?", Snackbar.LENGTH_SHORT)
-                .setBackgroundTint(Color.GRAY)
-                .setTextColor(Color.RED)
-                .setActionTextColor(Color.BLUE)
-                .setAction("EVET"){
-                    if (sepetListesi.size == 1){
-                        viewModel.sepetListesi.value = emptyList()
-                        viewModel.sepetTutariLiveData.value = "0"
-                    }
-                    viewModel.sepetYemekSil(sepet.sepet_yemek_id,"Dante")
-                    viewModel.sepetYukle("Dante")
-                    val dialog = DialogFragment()
-                    val dataToPass = "deleted"
-                    dialog.setData(dataToPass)
-                    dialog.show(frgManager,"Dialog")
-                }
-
-                .show()
-        }
+    fun submitList(sepet:List<SepetYemekler>){
+        sepetListesi.addAll(sepet)
     }
 }

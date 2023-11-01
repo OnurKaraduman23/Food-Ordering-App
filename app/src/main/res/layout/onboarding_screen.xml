@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-            <variable
-                name="onBoardingNesnesi"
-                type="com.example.udemybitirme2.data.onboarding.OnBoardingItem" />
+            <variable name="onBoardingNesnesi" type="com.example.udemybitirme2.data.onboarding.OnBoardingItem" />
             <variable name="title" type="String" />
             <variable name="description" type="String" />
     </data>
