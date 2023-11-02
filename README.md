@@ -14,4 +14,4 @@ Designed with MVVM architecture, the app offers users a seamless approach to ord
 ## Usage Video
 | Video                                                                         |
 |---------------------------------------------------------------------------------|
-| <img src="(https://github.com/Honor13/Food-Ordering-App/assets/53227891/75d8c195-fa9b-4dba-8f57-d425d803ef7b" alt="On Boarding" style="width:200px"/> |
+| <img src="https://github.com/Honor13/Food-Ordering-App/assets/53227891/75d8c195-fa9b-4dba-8f57-d425d803ef7b" alt="On Boarding" style="width:200px"/> |
