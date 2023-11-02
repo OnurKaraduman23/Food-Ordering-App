@@ -10,7 +10,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:context=".ui.fragment.DialogFragment">
+        tools:context=".ui.fragment.DialogFragment"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/transparent">
 
 
         <com.airbnb.lottie.LottieAnimationView
@@ -19,6 +21,8 @@
             android:layout_height="300dp"
             android:layout_gravity="center"
             app:lottie_loop="true"
+            android:background="@color/transparent"
+            android:backgroundTint="@color/transparent"
             />
 
 

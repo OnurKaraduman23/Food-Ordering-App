@@ -102,6 +102,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
                     android:layout_gravity="center">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -113,7 +114,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="8dp"
                         android:text='@{yemeklerNesnesi.yemek_fiyat + " ₺"}'
                         android:textColor="@color/black"
                         android:textSize="38sp" />
@@ -139,14 +139,15 @@
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingVertical="@dimen/_5ssp">
+                            android:paddingVertical="16dp"
+                            >
 
                             <ImageView
                                 android:id="@+id/imgAzalt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
+
                                 android:background="@color/purple_700"
                                 android:onClick="@{() -> yemekDetayFragmentNesnesi.urunAdetAzalt(textViewYemekAdet.getText().toString())}"
                                 android:src="@drawable/ic_decrease" />
@@ -168,7 +169,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginBottom="8dp"
                                 android:gravity="center"
-                                android:paddingVertical="@dimen/_5ssp"
+                                android:paddingVertical="15dp"
                                 android:text="@{urunAdet.toString()}"
                                 android:textColor="@color/black"
                                 android:textSize="38sp" />
@@ -178,7 +179,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:paddingVertical="@dimen/_5ssp">
+                            android:paddingVertical="16dp">
 
                             <ImageView
                                 android:id="@+id/imgArttir"
