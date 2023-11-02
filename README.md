@@ -13,3 +13,4 @@ Designed with MVVM architecture, the app offers users a seamless approach to ord
 
 
 
+[foodScreen.webm](https://github.com/Honor13/Food-Ordering-App/assets/53227891/75d8c195-fa9b-4dba-8f57-d425d803ef7b)
