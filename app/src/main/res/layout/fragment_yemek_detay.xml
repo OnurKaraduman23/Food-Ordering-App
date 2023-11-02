@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-   >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
             <variable name="yemekDetayFragmentNesnesi" type="com.example.udemybitirme2.ui.fragment.YemekDetayFragment" />
@@ -10,14 +9,12 @@
             <variable name="urunAdet" type="String" />
             <variable name="urunTotalFiyat" type="String" />
             <variable name="textViewYemekAd" type="String" />
-
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
-
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarDetail"
@@ -26,7 +23,6 @@
             android:background="@color/transparent"
             android:theme="@style/Theme.AppCompat.NoActionBar">
 
-
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_250sdp"
@@ -34,7 +30,6 @@
                 app:expandedTitleMarginEnd="@dimen/_72sdp"
                 app:expandedTitleMarginStart="@dimen/_16sdp"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
-
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/imgYemekGorsel"
@@ -76,11 +71,7 @@
                     android:padding="@dimen/_8sdp"
                     android:src="@drawable/ic_fav_unfill" />
 
-
             </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -90,8 +81,6 @@
             android:layout_height="match_parent"
             android:clipToPadding="false"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -136,18 +125,15 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingVertical="16dp"
-                            >
+                            android:layout_gravity="center">
 
                             <ImageView
                                 android:id="@+id/imgAzalt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="3dp"
-
                                 android:background="@color/purple_700"
                                 android:onClick="@{() -> yemekDetayFragmentNesnesi.urunAdetAzalt(textViewYemekAdet.getText().toString())}"
                                 android:src="@drawable/ic_decrease" />
@@ -167,9 +153,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_marginBottom="8dp"
+                                android:layout_marginBottom="2dp"
                                 android:gravity="center"
-                                android:paddingVertical="15dp"
                                 android:text="@{urunAdet.toString()}"
                                 android:textColor="@color/black"
                                 android:textSize="38sp" />
@@ -179,7 +164,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:paddingVertical="16dp">
+                            android:layout_gravity="center">
 
                             <ImageView
                                 android:id="@+id/imgArttir"
@@ -191,14 +176,9 @@
                                 android:src="@drawable/ic_add" />
                         </LinearLayout>
 
-
                     </LinearLayout>
 
-
-
-
                 </androidx.cardview.widget.CardView>
-
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -243,7 +223,6 @@
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_baseline_access_time_24" />
 
-
                                 <TextView
                                     android:id="@+id/tvTime"
                                     android:layout_width="match_parent"
@@ -273,7 +252,6 @@
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_baseline_access_time_24" />
 
-
                                 <TextView
                                     android:id="@+id/cal"
                                     android:layout_width="match_parent"
@@ -300,7 +278,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_baseline_access_time_24" />
-
 
                                 <TextView
                                     android:id="@+id/tvServing"
@@ -331,7 +308,6 @@
                     android:fontFamily="@font/gilroy_bold"
                     android:paddingStart="@dimen/_10sdp"
                     android:text="Ingredients"
-
                     android:textColor="@color/black"
                     android:textSize="@dimen/_15ssp" />
 
@@ -357,7 +333,6 @@
                             android:textColor="@color/hintTextColor"
                             android:textStyle="bold"
                             android:fontFamily="@font/gilroy_light"
-
                             android:paddingTop="@dimen/_10sdp"
                             android:paddingStart="@dimen/_5sdp"
                             android:paddingBottom="@dimen/_10sdp" />
@@ -446,7 +421,6 @@
                 android:textSize="30sp"
                 android:textStyle="bold" />
         </com.google.android.material.bottomappbar.BottomAppBar>
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
