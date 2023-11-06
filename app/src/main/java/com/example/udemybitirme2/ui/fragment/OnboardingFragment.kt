@@ -15,7 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.udemybitirme2.MainActivity
 import com.example.udemybitirme2.R
 import com.example.udemybitirme2.data.onboarding.OnBoardingItem
-import com.example.udemybitirme2.data.util.gecisYap
+import com.example.udemybitirme2.util.gecisYap
 import com.example.udemybitirme2.databinding.FragmentOnboardingBinding
 import com.example.udemybitirme2.ui.adapter.OnboardingScreenAdapter
 

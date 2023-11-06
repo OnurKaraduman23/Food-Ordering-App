@@ -19,6 +19,7 @@
     <color name="hintTextColor">#787878</color>
     <color name="pink">#F6DEDE</color>
     <color name="orangered">#C64141</color>
+    <color name="red">#F40505</color>
 
 
     <!-- Onboarding screen colors -->

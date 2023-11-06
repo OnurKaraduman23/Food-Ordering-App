@@ -22,7 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var viewModel:HomeViewModel
     private lateinit var aramaListesi:List<Yemekler>
-    private val adapter:YemeklerAdapter by lazy { YemeklerAdapter() }
+    private val adapter:YemeklerAdapter by lazy { YemeklerAdapter(viewModel) }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home,container,false)

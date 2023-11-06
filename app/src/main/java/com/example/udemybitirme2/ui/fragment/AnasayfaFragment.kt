@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import com.example.udemybitirme2.R
-import com.example.udemybitirme2.data.util.gecisYap
+import com.example.udemybitirme2.util.gecisYap
 import com.example.udemybitirme2.databinding.FragmentAnasayfaBinding
 import dagger.hilt.android.AndroidEntryPoint
 

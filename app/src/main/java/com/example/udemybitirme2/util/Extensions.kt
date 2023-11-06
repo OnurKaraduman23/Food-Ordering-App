@@ -1,4 +1,4 @@
-package com.example.udemybitirme2.data.util
+package com.example.udemybitirme2.util
 
 import android.view.View
 import androidx.navigation.NavDirections
