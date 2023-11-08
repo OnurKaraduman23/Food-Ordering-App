@@ -21,22 +21,37 @@ import com.example.udemybitirme2.ui.fragment.AnasayfaFragmentDirections
 import com.example.udemybitirme2.ui.viewmodel.FavorilerViewModel
 import com.example.udemybitirme2.ui.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 
 class YemeklerAdapter(var homeViewModel: HomeViewModel):RecyclerView.Adapter<YemeklerAdapter.CardTasarimNesneleriniTutucu>() {
 
     private var yemeklerListesi : MutableList<Yemekler> = mutableListOf()
 
-//    private var favYemeklerListesi : MutableList<FavoriYemekler> = mutableListOf()
-
-
     inner class CardTasarimNesneleriniTutucu(var tasarim:CardYemekTasarimBinding):RecyclerView.ViewHolder(tasarim.root){
 
-
         fun bind(yemek: Yemekler){
-
+            var favSayisi : Int? = 0
             var fav = false
+            var tus = false
             tasarim.yemekNesnesi = yemek
+
+            CoroutineScope(Dispatchers.Main).launch {
+                favSayisi =getFavoriSayisi(yemek.yemek_id)
+                yemek.yemek_adi
+                if (favSayisi!! > 0) fav = true else fav = false
+                if (fav){
+                    tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_dolu)
+                }else{
+                    tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_bos)
+                }
+            }
+
+//            if (favSayisi!! > 0) fav = true else fav = false
+            Log.e("Dante Adapter ","yemkAdi:${yemek.yemek_adi} - favSayisi: $favSayisi - fav:$fav")
 
 
             val yemeklerUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
@@ -56,8 +71,8 @@ class YemeklerAdapter(var homeViewModel: HomeViewModel):RecyclerView.Adapter<Yem
             }
 
             tasarim.imageViewFavoriButton.setOnClickListener{
-                fav = !fav
-                if (fav == false){
+                tus = !tus
+                if (tus == false){
                     tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_bos)
                     homeViewModel.sil(yemek.yemek_id)
                 }
@@ -86,16 +101,15 @@ class YemeklerAdapter(var homeViewModel: HomeViewModel):RecyclerView.Adapter<Yem
 
     }
 
-
     fun submitList(yemekler:List<Yemekler>){
         yemeklerListesi.clear()
         yemeklerListesi.addAll(yemekler)
         this.notifyDataSetChanged()
     }
 
-
-
-
-
+    suspend fun getFavoriSayisi(yemek_id:Int): Int {
+        return homeViewModel.getYemekByAdi(yemek_id)
+    }
 
 }
+

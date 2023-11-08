@@ -42,6 +42,11 @@ class YemeklerDataSource(var yDao : YemeklerDao, var fYDao : FavoriYemeklerDao) 
         fYDao.silFav(yemek_id)
     }
 
+    suspend fun getYemekByAdi(yemek_id:Int):Int{
+//        Log.e("Dante Ds ","yemkAdi:$yemek_adi, return sonucu = ${fYDao.getYemekByAdi(yemek_adi)}")
+        return fYDao.getYemekByAdi(yemek_id)
+    }
+
 
 
 

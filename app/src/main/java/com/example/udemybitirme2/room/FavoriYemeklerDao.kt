@@ -19,8 +19,9 @@ interface FavoriYemeklerDao {
     @Query("DELETE FROM favoriler WHERE yemek_id = :yemek_id")
     suspend fun silFav(yemek_id:Int)
 
-    @Query("SELECT COUNT(*) FROM favoriler WHERE yemek_id = :yemekId")
-    suspend fun checkIfUrunExists(yemekId: Int) : Int
+    @Query("SELECT COUNT(*) FROM favoriler WHERE yemek_id = :yemek_id")
+    suspend fun getYemekByAdi(yemek_id: Int) : Int
+
 
 
 }

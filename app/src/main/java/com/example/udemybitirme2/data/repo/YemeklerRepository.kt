@@ -24,5 +24,7 @@ class YemeklerRepository(var yDso:YemeklerDataSource) {
 
     suspend fun favSil(yemek_id:Int) = yDso.silFav(yemek_id)
 
+    suspend fun getYemekByAdi(yemek_id: Int) : Int = yDso.getYemekByAdi(yemek_id)
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.udemybitirme2.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +11,9 @@ import com.example.udemybitirme2.data.repo.YemeklerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import kotlin.Exception
 
@@ -53,6 +56,14 @@ class HomeViewModel @Inject constructor(var yRepo:YemeklerRepository) : ViewMode
         CoroutineScope(Dispatchers.Main).launch {
             yRepo.favSil(yemek_id)
         }
+    }
+
+    suspend fun getYemekByAdi(yemek_id: Int): Int = withContext(Dispatchers.Main) {
+        val result = CoroutineScope(Dispatchers.IO).async {
+            yRepo.getYemekByAdi(yemek_id)
+        }.await()
+//        Log.e("Dante yRp ","yemkAdi:$yemek_adi, return sonucu = ${yRepo.getYemekByAdi(yemek_adi)}")
+        return@withContext result
     }
 
 

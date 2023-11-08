@@ -5,6 +5,8 @@
 
     <data>
             <variable name="yemekNesnesi" type="com.example.udemybitirme2.data.entity.Yemekler" />
+            <variable name="favYemek" type="com.example.udemybitirme2.data.entity.FavoriYemekler" />
+             <import type="android.view.View"></import>
     </data>
 
     <LinearLayout
@@ -61,7 +63,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
                     android:layout_marginBottom="4dp"
                     app:layout_constraintBottom_toTopOf="@+id/imageViewYemek"
                     app:layout_constraintEnd_toEndOf="parent"

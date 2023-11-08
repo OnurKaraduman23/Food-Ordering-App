@@ -26,6 +26,7 @@ class FavoriYemeklerAdapter(var favoriYemeklerListesi:List<FavoriYemekler>,var v
 
             tasarim.yemekNesnesi = yemek
 
+            tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_dolu)
             val yemeklerUrl = "http://kasimadalan.pe.hu/yemekler/resimler/${yemek.yemek_resim_adi}"
             Glide.with(tasarim.root.context).load(yemeklerUrl).override(500,750).into(tasarim.imageViewYemek)
             tasarim.imageView.setOnClickListener {
@@ -37,10 +38,6 @@ class FavoriYemeklerAdapter(var favoriYemeklerListesi:List<FavoriYemekler>,var v
 
             }
 
-//            tasarim.imageViewYemek.setOnClickListener {
-//                val gecis = AnasayfaFragmentDirections.yemekDetayFragmentGecis(yemek)
-//                Navigation.gecisYap(it,gecis)
-//            }
 
             tasarim.imageViewFavoriButton.setOnClickListener{
                 viewModel.sil(yemek.yemek_id)
