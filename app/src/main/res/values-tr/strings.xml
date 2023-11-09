@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Udemy Bitirme</string>
+    <string name="open_nav">Navigation Drawerı Aç</string>
+    <string name="close_nav">Navigation Drawerı Kapat</string>
+    <string name="home">Anasayfa</string>
+    <string name="campaign">Kampanyalar</string>
+    <string name="profile">Profil</string>
+    <string name="favorite">Favoriler</string>
+    <string name="restaurant">Restoranlar</string>
+    <string name="extended_fab_label">SEPETE EKLE</string>
+    <string name="extended_fab_content_desc">SEPETE EKLE</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="skip">Geç</string>
+    <string name="get_started">Hemen Başla</string>
+    <string name="total">Toplam:</string>
+    <string name="confirm_basket">SEPETİ ONAYLA</string>
+    <string name="create">Oluştur</string>
+    <string name="free_delivery">Ücretsiz Gönderim</string>
+    <string name="email">contact@uygulamaAdi.com</string>
+    <string name="language">Diller</string>
+    <string name="logout">Çıkış</string>
+    <string name="regional">Bölgesel</string>
+    <string name="dark_mode">Karanlık Mod</string>
+    <string name="edit_personal_details">Kişisel Bilgileri Düzenle</string>
+    <string name="userName">Dante</string>
+    <string name="edit_profile">Profili Düzenle</string>
+    <string name="change_password">Şifre Değiştir</string>
+    <string name="notifications">Bildirimler</string>
+    <string name="ingredients">İçindekiler</string>
+    <string name="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s</string>
+    <string name="instructions">Detaylar</string>
+    <string name="add_to_cart">Sepete Ekle</string>
+    <string name="price">Fiyat:</string>
+    <string name="quantity">Adet:</string>
+    <string name="settings">Ayarlar</string>
+    <string name="about_us">Hakkımızda</string>
+    <string name="_247_cals">247 kalori</string>
+    <string name="_30_min">30 dk</string>
+    <string name="_3_persons">3 kişilik</string>
+    <string name="search">Ara</string>
+</resources>
