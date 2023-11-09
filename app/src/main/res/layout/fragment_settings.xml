@@ -53,14 +53,12 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/circleImageViewLogout" />
 
-                <ImageButton
-                    android:id="@+id/imgToolbarBtnBack5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginEnd="16dp"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_right"
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintBottom_toBottomOf="@+id/circleImageViewLanguage"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/circleImageViewLanguage" />
