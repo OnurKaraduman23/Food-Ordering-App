@@ -5,27 +5,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LiveData
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.udemybitirme2.R
-import com.example.udemybitirme2.data.datasource.YemeklerDataSource
-import com.example.udemybitirme2.data.entity.FavoriYemekler
 import com.example.udemybitirme2.data.entity.Yemekler
-import com.example.udemybitirme2.data.repo.YemeklerRepository
 import com.example.udemybitirme2.util.gecisYap
 import com.example.udemybitirme2.databinding.CardYemekTasarimBinding
 import com.example.udemybitirme2.ui.fragment.AnasayfaFragmentDirections
-import com.example.udemybitirme2.ui.viewmodel.FavorilerViewModel
 import com.example.udemybitirme2.ui.viewmodel.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-
 
 class YemeklerAdapter(var homeViewModel: HomeViewModel):RecyclerView.Adapter<YemeklerAdapter.CardTasarimNesneleriniTutucu>() {
 
@@ -43,11 +35,8 @@ class YemeklerAdapter(var homeViewModel: HomeViewModel):RecyclerView.Adapter<Yem
                 favSayisi =getFavoriSayisi(yemek.yemek_id)
                 yemek.yemek_adi
                 if (favSayisi!! > 0) fav = true else fav = false
-                if (fav){
-                    tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_dolu)
-                }else{
-                    tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_bos)
-                }
+                if (fav) tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_dolu) else tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_bos)
+
             }
 
 //            if (favSayisi!! > 0) fav = true else fav = false
