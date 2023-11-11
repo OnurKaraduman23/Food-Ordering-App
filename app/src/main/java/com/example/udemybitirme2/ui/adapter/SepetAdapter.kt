@@ -23,7 +23,10 @@ class SepetAdapter(var viewModel:SepetViewModel,var frgManager:FragmentManager) 
     inner class DetayCardNesneleriniTutucu(var tasarim:SepetCardTasarimBinding) : RecyclerView.ViewHolder(tasarim.root){
 
         fun bind(sepet:SepetYemekler){
+
+
             tasarim.sepetYemeklerNesnesi = sepet
+
             val urunAdetliFiyat =  (sepet.yemek_fiyat * sepet.yemek_siparis_adet)
 
             tasarim.sepetYemeklerNesnesi = sepet

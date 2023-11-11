@@ -44,6 +44,9 @@ class SepetFragment : Fragment() {
     fun sepetiOnayla(){
         viewModel.sepetOnayla()
         animasyonGoster()
+        binding.textViewSepetBos.visibility = View.VISIBLE
+        binding.textViewToplamTutar.text = "0"
+        binding.sepetRV.visibility = View.INVISIBLE
     }
 
     fun animasyonGoster(){
