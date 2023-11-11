@@ -49,10 +49,10 @@ class YemekDetayFragment : Fragment() {
         viewModel.favState.observe(viewLifecycleOwner){
             if (viewModel.favState.value!!.toInt() > 0){
                 binding.imgToolbarBtnFav.setImageResource(R.drawable.ic_fav_fill)
-                booleanFavState = true
+
             }else{
                 binding.imgToolbarBtnFav.setImageResource(R.drawable.ic_fav_unfill)
-                booleanFavState = false
+
             }
         }
 
