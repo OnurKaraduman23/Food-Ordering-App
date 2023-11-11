@@ -42,13 +42,13 @@ class OnboardingFragment : Fragment() {
             ),
             OnBoardingItem(
                 onboaringImage = R.raw.onboarding2,
-                title = "Work On Time" ,
-                description = "When you're overwhelmed by the amount of work you have on your plate, stop and rethink"
+                title = "Add Favorites" ,
+                description = "Add or remove the dishes you like and order often to your favorites at any time"
             ),
             OnBoardingItem(
                 onboaringImage = R.raw.onboarding3,
-                title = "Get Reminder On Time" ,
-                description = "When you encounter a small task that less than 5 minutes to complete"
+                title = "Settings" ,
+                description = "Set your theme to your liking and choose from two language preferences"
             )
         ))
 

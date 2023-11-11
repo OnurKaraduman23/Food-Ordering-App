@@ -18,12 +18,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class AnasayfaFragment : Fragment() {
     private lateinit var fragmentManager : FragmentManager
     lateinit var binding: FragmentAnasayfaBinding
-    lateinit var it:View
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_anasayfa,container,false)
 
-        it = binding.fab
+
         binding.fragmentAnsayayfaNesnesi = this
         binding.bottomNavigationView.background = null
 
@@ -31,7 +31,7 @@ class AnasayfaFragment : Fragment() {
 
             when(item.itemId){
                 R.id.action_home -> openFragment(HomeFragment())
-                R.id.action_kampanya -> openFragment(ProfileFragment())
+                R.id.action_kampanya -> openFragment(KampanyalarFragment())
                 R.id.action_favori -> openFragment(FavorilerFragment())
                 R.id.action_restaurant -> openFragment(RestoranFragment())
             }
