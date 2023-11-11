@@ -1,10 +1,7 @@
 package com.example.udemybitirme2.ui.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.udemybitirme2.data.entity.FavoriYemekler
 import com.example.udemybitirme2.data.entity.Yemekler
 import com.example.udemybitirme2.data.repo.YemeklerRepository
@@ -52,7 +49,7 @@ class HomeViewModel @Inject constructor(var yRepo:YemeklerRepository) : ViewMode
         }
     }
 
-    fun sil(yemek_id:Int){
+    fun favSil(yemek_id:Int){
         CoroutineScope(Dispatchers.Main).launch {
             yRepo.favSil(yemek_id)
         }
@@ -62,7 +59,6 @@ class HomeViewModel @Inject constructor(var yRepo:YemeklerRepository) : ViewMode
         val result = CoroutineScope(Dispatchers.IO).async {
             yRepo.getYemekByAdi(yemek_id)
         }.await()
-//        Log.e("Dante yRp ","yemkAdi:$yemek_adi, return sonucu = ${yRepo.getYemekByAdi(yemek_adi)}")
         return@withContext result
     }
 

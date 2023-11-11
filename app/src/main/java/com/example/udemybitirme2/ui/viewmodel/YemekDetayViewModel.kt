@@ -6,7 +6,9 @@ import com.example.udemybitirme2.data.repo.YemeklerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
@@ -14,11 +16,12 @@ import javax.inject.Inject
 class YemekDetayViewModel @Inject constructor(var yRepo: YemeklerRepository): ViewModel() {
 
     var urunAdet = MutableLiveData<String>()
+    var favState = MutableLiveData<String>()
 
 
     init {
         urunAdet = MutableLiveData<String>("1")
-
+        favState = MutableLiveData<String>("0")
 
     }
     fun sepeteEkle(yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int,yemek_siparis_adet:Int,kullanici_adi:String){
@@ -37,6 +40,27 @@ class YemekDetayViewModel @Inject constructor(var yRepo: YemeklerRepository): Vi
             urunAdet.value=(urunAdeti.toInt() - 1 ).toString()
         }
 
+    }
+
+    fun favYemekEkle(yemek_id: Int,yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int){
+        CoroutineScope(Dispatchers.Main).launch {
+            yRepo.favYemekEkle(yemek_id,yemek_adi,yemek_resim_adi,yemek_fiyat)
+
+
+        }
+    }
+
+    fun favSil(yemek_id:Int){
+        CoroutineScope(Dispatchers.Main).launch {
+            yRepo.favSil(yemek_id)
+        }
+    }
+
+    suspend fun getYemekByAdi(yemek_id: Int): Int = withContext(Dispatchers.Main) {
+        val result = CoroutineScope(Dispatchers.IO).async {
+            yRepo.getYemekByAdi(yemek_id)
+        }.await()
+        return@withContext result
     }
 
 

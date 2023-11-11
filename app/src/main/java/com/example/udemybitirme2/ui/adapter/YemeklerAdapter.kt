@@ -63,7 +63,7 @@ class YemeklerAdapter(var homeViewModel: HomeViewModel):RecyclerView.Adapter<Yem
                 tus = !tus
                 if (tus == false){
                     tasarim.imageViewFavoriButton.setImageResource(R.drawable.ic_favorite_bos)
-                    homeViewModel.sil(yemek.yemek_id)
+                    homeViewModel.favSil(yemek.yemek_id)
                 }
                 else{
                     homeViewModel.favYemekEkle(yemek.yemek_id,yemek.yemek_adi,yemek.yemek_resim_adi,yemek.yemek_fiyat)

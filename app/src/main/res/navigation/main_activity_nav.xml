@@ -48,6 +48,9 @@
         <argument
             android:name="yemekler"
             app:argType="com.example.udemybitirme2.data.entity.Yemekler" />
+        <action
+            android:id="@+id/yemekDetayAnasayfaGecis"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
     <fragment
         android:id="@+id/onboardingFragment2"
